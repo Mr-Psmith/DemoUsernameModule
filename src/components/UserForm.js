@@ -1,47 +1,56 @@
-import React, {useState} from "react";
-import "./UserForm.css"
-
-
+import React, { useState } from "react";
+import "./UserForm.css";
 
 const UserForm = (props) => {
+  const [userName, setUserName] = useState("");
+  const [age, setAge] = useState("");
 
-    const [userName, setUserName] = useState("A User name Please");
-    const [age, setAge] = useState("an Age please")
-    const [userInfo, setUserInfo] = useState("");
-
-    const formSubmitHandler = (event) => {
-        setUserInfo(event.target.value)
-        console.log(userInfo);
+  const formSubmitHandler = (event) => {
+    event.preventDefault();
+    if (userName.trim().length === 0 || age.trim().length === 0) {
+        return;
+    } 
+    if (+age < 1) {
+        return;
     }
+    /* if (userName.trim().length < 2) { isnt working, why???
+        return;
+    } */
+    const saveUserInfo = { userName, age };
+    console.log(saveUserInfo);
+    props.onSaveUserInfo(saveUserInfo);
+    /* console.log(userName, age); */
+    setAge("");
+    setUserName("");
 
-    /* const formSubmitHandler = (event) => {
+  };
+
+  const userNameInputHandler = (event) => {
+    /* if (event.target.value.trim().length > 2) { */
         setUserName(event.target.value);
+    /* } else {
+        return;
+    } */
+  };
+  const ageInputHandler = (event) => {
+    /* if (event.target.value > 7) { */
         setAge(event.target.value);
-        console.log(userName);
-    }; */
-
-    const userNameInputHandler = (event) => {
-        setUserName(event.target.value);
-        console.log(userName);
-    };
-    const ageInputHandler = (event) => {
-        setAge(event.target.value);
-        console.log(age);
-    };
-
-    return (
-        <div className="form-control" onSubmit={formSubmitHandler}>
-            <label>Username</label>
-            <input onInput={userNameInputHandler}></input>
-            <label>Age (Years)</label>
-            <input onInput={ageInputHandler}></input>
-            <button type="submit">Add User</button>
-        </div>
-    );
+    /* } else {
+        return;
+    } */
 };
 
 
 
-
+  return (
+    <form className="form-control" onSubmit={formSubmitHandler}>
+      <label htmlFor="username" >Username</label>
+      <input value={userName} id="username" type="text" onChange={userNameInputHandler}></input>
+      <label htmlFor="userage">Age (Years)</label>
+      <input value={age} id="userage" type="number" min="1" onChange={ageInputHandler}></input>
+      <button type="submit">Add User</button>
+    </form>
+  );
+};
 
 export default UserForm;
