@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./UserForm.css";
+import Card from "../UI/Card";
 
 const UserForm = (props) => {
   const [userName, setUserName] = useState("");
@@ -16,9 +17,7 @@ const UserForm = (props) => {
     /* if (userName.trim().length < 2) { isnt working, why???
         return;
     } */
-    const saveUserInfo = { userName, age };
-    console.log(saveUserInfo);
-    props.onSaveUserInfo(saveUserInfo);
+    props.onSaveUserInfo(userName, age);
     /* console.log(userName, age); */
     setAge("");
     setUserName("");
@@ -43,13 +42,15 @@ const UserForm = (props) => {
 
 
   return (
-    <form className="form-control" onSubmit={formSubmitHandler}>
-      <label htmlFor="username" >Username</label>
-      <input value={userName} id="username" type="text" onChange={userNameInputHandler}></input>
-      <label htmlFor="userage">Age (Years)</label>
-      <input value={age} id="userage" type="number" min="1" onChange={ageInputHandler}></input>
-      <button type="submit">Add User</button>
-    </form>
+    <Card>
+      <form className="form-control" onSubmit={formSubmitHandler}>
+        <label htmlFor="username" >Username</label>
+        <input value={userName} id="username" type="text" onChange={userNameInputHandler}></input>
+        <label htmlFor="userage">Age (Years)</label>
+        <input value={age} id="userage" type="number" min="1" onChange={ageInputHandler}></input>
+        <button type="submit">Add User</button>
+      </form>
+    </Card>
   );
 };
 
