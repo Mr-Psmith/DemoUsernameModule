@@ -1,0 +1,11 @@
+.button {
+    background-color: purple;
+    color: wheat;
+    margin-top: 3vh;
+    padding: 0.5vw;
+    border-radius: 4px;
+  }
+
+  .button:hover {
+    cursor: pointer;
+  }
