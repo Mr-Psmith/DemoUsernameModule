@@ -16,14 +16,14 @@ function App() {
 
 
   return (
-      <div /* className='container' */>
+      <> {/* Dunno what support means, but this might not be supported...... ????? Prob in and after 2023 it is supported already */}
         <section className='section1'>
           <UserForm onSaveUserInfo={userInfo} />
         </section>
         <section className='section1'>
           <UserList info={userInform}/>
         </section>
-      </div>
+      </>
   );
 }
 
