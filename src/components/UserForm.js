@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./UserForm.css";
 import Card from "../UI/Card";
 import ErrorModal from "../UI/ErrorModal";
+import Wrapper from "../Helpers/Wrepper";
 
 const UserForm = (props) => {
   const [userName, setUserName] = useState("");
@@ -46,7 +47,7 @@ const UserForm = (props) => {
   };
 
   return (
-    <div>
+    <Wrapper>
       {error && ( /* If error is a thing, - so it is true - this will render otherwise nothing */
         <ErrorModal 
           closeModalHandler={modalCloseHandler}
@@ -74,7 +75,7 @@ const UserForm = (props) => {
           <button type="submit">Add User</button>
         </form>
       </Card>
-    </div>
+    </Wrapper>
   );
 };
 
