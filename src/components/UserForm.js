@@ -37,7 +37,7 @@ const UserForm = (props) => {
     props.onSaveUserInfo(enteredName, enteredAge);
     /* setAge(""); Taken out when we used ref-s instead
     setUserName(""); 
-    Instead we use what we shouldnt mopstly but its okay sometimes: */
+    Instead we use what we "shouldn't mostly" but its okay sometimes: */
     nameInputRef.current.value = "";
     ageInputRef.current.value = "";
   };
